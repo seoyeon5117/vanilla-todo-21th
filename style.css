@@ -1,12 +1,24 @@
+@font-face {
+    font-family : 'Pretendard';
+    src : url('./assets/fonts/Pretendard-Regular.woff2');
+}
+
+@font-face {
+    font-family : 'Pretendard';
+    src : url('./assets/fonts/Pretendard-Bold.woff2');
+    font-weight: bold;
+}
+
 body, ul {
     margin: 0;
     padding: 0;
+    font-family: 'Pretendard';
 }
 
 li {
     list-style-type: none;
     display: flex;
-    padding: .5rem .75rem;
+    padding: .5rem 0;
     align-items: center;
     gap: .25rem;
 }
@@ -18,7 +30,6 @@ li {
 
 #header {
     color: #AB4E59;
-    width: 100%;
     border-bottom: solid #AB4E59 .1875rem;
     padding: 0 1.25rem .75rem 1.25rem;
 }
@@ -33,7 +44,7 @@ li {
     flex-grow: 1;
     height: 100%;
     width: 40rem;
-    padding: .625rem;
+    padding: 1.25rem;
     gap: .75rem;
     font-size: 1.25rem;
 }
@@ -67,13 +78,13 @@ li {
 }
 
 .addButton:hover {
-    background-color: #c49399;
+    background-color: #d6aab0;
 }
 
 .addButton:disabled {
     background-color: white;
-    border: solid #e9dadc .125rem;
-    color: #e9dadc;
+    border: solid #d6aab0 .125rem;
+    color: #d6aab0;
     cursor: default;
 }
 
@@ -110,6 +121,6 @@ li {
 }
 
 .completed {
-    color: #e9dadc;
+    color: #d6aab0;
     text-decoration: line-through;
 }
