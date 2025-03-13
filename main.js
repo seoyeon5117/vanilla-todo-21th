@@ -1,9 +1,13 @@
+import { formatDate } from './utils/formatDate.js';
+
 const todoInput = document.querySelector('.todoInput');
 const todoButton = document.querySelector('.addButton');
 const todoList = document.querySelector('.todoList');
 const date = document.querySelector('.date');
 
 document.addEventListener("DOMContentLoaded", () => {
+    date.innerHTML = formatDate();
+
     let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
     const saveTodos = () => {
