@@ -64,16 +64,26 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTodoItem(newTodo);
     }
 
+    // todo 추가 버튼 disable
+    const disableAddButton = () => {
+        const todoText = todoInput.value.trim();
+        if (todoText) {
+            todoButton.disabled = false;
+        } else {
+            todoButton.disabled = true;
+        }
+    }
+    
+    disableAddButton();
+
+    todoInput.addEventListener("keyup", disableAddButton);
+
     // todo 추가 버튼 클릭 시
     todoButton.addEventListener("click", (e) => {
         e.preventDefault();
         const todoText = todoInput.value.trim();
-        if(!todoText) {
-            // alert 모달
-        } else {
-            addTodoItem(todoText);
-            todoInput.value = "";
-        }
+        addTodoItem(todoText);
+        todoInput.value = "";
     });
 
     renderTodo();
