@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./style.css">
+        <title>Todo List</title>
+    </head>
+    <body>
+        <div id="container">
+            <header id="header">
+                <h1 class="headerTitle">Todo List</h1>
+                <time class="date"></time>
+            </header>
+            <article id="todoContainer">
+                <section class="todoSection">
+                    <input type="text" class="todoInput" placeholder="할 일을 입력해주세요."/>
+                    <button type="button" class="addButton">추가</button>
+                </section>
+                <main class="todoMain">
+                    <ul class="todoList"></ul>
+                </main>
+            </article>
+        </div>
+    </body>
+    <script type="module" src="./main.js" defer></script>
+</html>
