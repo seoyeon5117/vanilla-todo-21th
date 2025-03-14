@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     let todos = JSON.parse(localStorage.getItem("todos")) || {};
-    console.log(todos);
 
     const saveTodos = () => {
         localStorage.setItem("todos", JSON.stringify(todos));
@@ -121,7 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     todoInput.addEventListener("keydown", (e) => {
-        if(e.key === "Enter") {
+        if(e.key === "Enter" && e.isComposing === false) {
+            e.preventDefault();
             todoButton.click();
         }
     });
