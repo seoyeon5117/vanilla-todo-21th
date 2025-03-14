@@ -1,5 +1,6 @@
-export const formatDate = () => {
-    const today = new Date();
+export const formatDate = (dayOffset = 0) => {
+    const date = new Date();
+    date.setDate(date.getDate() + dayOffset);
     const options = { year: "numeric", month: "long", day: "numeric", weekday: "long" };
-    return today.toLocaleDateString("ko-KR", options);
+    return date.toLocaleDateString("ko-KR", options);
 }

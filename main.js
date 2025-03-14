@@ -4,11 +4,32 @@ const todoInput = document.querySelector('.todoInput');
 const todoButton = document.querySelector('.addButton');
 const todoList = document.querySelector('.todoList');
 const date = document.querySelector('.date');
+const previousDate = document.querySelector('.previousDate');
+const nextDate = document.querySelector('.nextDate');
+
+const today = formatDate();
 
 document.addEventListener("DOMContentLoaded", () => {
-    date.innerHTML = formatDate();
+    let selectedOffset = 0;
+    let selectedDate = today;
 
-    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+    date.innerHTML = selectedDate;
+    previousDate.addEventListener("click", () => {
+        selectedOffset--;
+        selectedDate = formatDate(selectedOffset);
+        date.innerHTML = selectedDate;
+        renderTodo();
+    })
+
+    nextDate.addEventListener("click", () => {
+        selectedOffset++;
+        selectedDate = formatDate(selectedOffset);
+        date.innerHTML = selectedDate;
+        renderTodo();
+    })
+
+    let todos = JSON.parse(localStorage.getItem("todos")) || {};
+    console.log(todos);
 
     const saveTodos = () => {
         localStorage.setItem("todos", JSON.stringify(todos));
@@ -41,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteButton.type = "button";
         deleteButton.className= 'deleteButton';
         deleteButton.addEventListener('click', () => {
-            todos = todos.filter(item => item.id !== todo.id);
+            todos[selectedDate] = todos[selectedDate].filter(item => item.id !== todo.id);
             saveTodos();
             renderTodo();
         })
@@ -52,7 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const renderTodo = () => {
         todoList.innerHTML = '';
-        todos.forEach((todo) => renderTodoItem(todo));
+        if (!todos[selectedDate]) {
+            todos[selectedDate] = [];
+        }
+        if(todos[selectedDate]) {
+            todos[selectedDate].forEach((todo) => renderTodoItem(todo));
+        }
     }
 
     // todo 추가 함수
@@ -63,7 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
             completed: false,
         };
 
-        todos.push(newTodo);
+        if(!todos[selectedDate]) {
+            todos[selectedDate] = [];
+        }
+
+        todos[selectedDate].push(newTodo);
         saveTodos();
         renderTodoItem(newTodo);
     }
@@ -88,6 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const todoText = todoInput.value.trim();
         addTodoItem(todoText);
         todoInput.value = "";
+    });
+
+    todoInput.addEventListener("keydown", (e) => {
+        if(e.key === "Enter") {
+            todoButton.click();
+        }
     });
 
     renderTodo();

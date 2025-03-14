@@ -34,8 +34,37 @@ li {
     padding: 0 1.25rem .75rem 1.25rem;
 }
 
+.dateNavigation {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
 .date {
     font-size: 1rem;
+}
+
+.previousDate {
+    width: 1rem;
+    height: 1rem;
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url('./assets/imgs/Arrow.svg');
+    border: none;
+    cursor: pointer;
+    transform: rotate(180deg);
+}
+
+.nextDate {
+    width: 1rem;
+    height: 1rem;
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url('./assets/imgs/Arrow.svg');
+    border: none;
+    cursor: pointer;
 }
 
 #todoContainer {
