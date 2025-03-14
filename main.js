@@ -6,6 +6,7 @@ const todoList = document.querySelector('.todoList');
 const date = document.querySelector('.date');
 const previousDate = document.querySelector('.previousDate');
 const nextDate = document.querySelector('.nextDate');
+const countIncompleteTodo = document.querySelector('.countIncompleteTodo');
 
 const today = formatDate();
 
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             todo.completed = !todo.completed;
             todoItem.className = todo.completed ? "completed" : "";
             saveTodos();
+            countTodo();
         })
 
         // todo text
@@ -75,9 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!todos[selectedDate]) {
             todos[selectedDate] = [];
         }
-        if(todos[selectedDate]) {
-            todos[selectedDate].forEach((todo) => renderTodoItem(todo));
-        }
+        todos[selectedDate].forEach((todo) => renderTodoItem(todo));
+        countTodo();
     }
 
     // todo 추가 함수
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         todos[selectedDate].push(newTodo);
+        countTodo();
         saveTodos();
         renderTodoItem(newTodo);
     }
@@ -125,6 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
             todoButton.click();
         }
     });
+
+    const countTodo = () => {
+        const incompleteTodos = todos[selectedDate].filter(todo => !todo.completed);
+        countIncompleteTodo.innerHTML = "할 일: " + incompleteTodos.length;
+    }
 
     renderTodo();
 });

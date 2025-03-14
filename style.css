@@ -67,6 +67,11 @@ li {
     cursor: pointer;
 }
 
+.countIncompleteTodo {
+    color: #AB4E59;
+    font-size: 16px;
+}
+
 #todoContainer {
     display: flex;
     flex-direction: column;
