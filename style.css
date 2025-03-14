@@ -16,11 +16,14 @@ body, ul {
 }
 
 li {
+    width: 100%;
     list-style-type: none;
     display: flex;
     padding: .5rem 0;
     align-items: center;
     gap: .25rem;
+    align-items: start;
+    overflow: hidden;
 }
 
 #container {
@@ -131,6 +134,7 @@ li {
     background-image: url('./assets/imgs/DeleteIcon.svg');
     border: none;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .todoMain {
@@ -145,6 +149,7 @@ li {
     border: solid #AB4E59 .125rem;
     background-color: white;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .todoCheckbox:checked {
@@ -152,6 +157,13 @@ li {
     background-image: url('./assets/imgs/CheckIcon.svg');
     background-size: contain;
     padding: .25rem;
+}
+
+.todoContent {
+    display: block;
+    min-width: 0;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .completed {

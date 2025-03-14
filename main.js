@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const content = document.createElement('label');
         content.innerText = todo.text;
         content.htmlFor = todo.id;
+        content.className = 'todoContent';
 
         // todo 삭제 버튼
         const deleteButton = document.createElement('button');
