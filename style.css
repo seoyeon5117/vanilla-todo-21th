@@ -22,7 +22,6 @@ li {
     padding: .5rem 0;
     align-items: center;
     gap: .25rem;
-    align-items: start;
     overflow: hidden;
 }
 

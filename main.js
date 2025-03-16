@@ -29,6 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTodo();
     })
 
+    const countTodo = () => {
+        const incompleteTodos = todos[selectedDate].filter(todo => !todo.completed);
+        countIncompleteTodo.innerHTML = "할 일: " + incompleteTodos.length;
+    }
+
     let todos = JSON.parse(localStorage.getItem("todos")) || {};
 
     const saveTodos = () => {
@@ -128,11 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
             todoButton.click();
         }
     });
-
-    const countTodo = () => {
-        const incompleteTodos = todos[selectedDate].filter(todo => !todo.completed);
-        countIncompleteTodo.innerHTML = "할 일: " + incompleteTodos.length;
-    }
 
     renderTodo();
 });
